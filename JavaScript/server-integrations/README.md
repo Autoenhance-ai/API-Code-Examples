@@ -9,7 +9,7 @@ This repository also includes various scripts that can be run directly from the 
 
 ## Using the scripts
 
-First, open the desired script in your terminal, and install the dependencies:
+First, open the desired script folder in your terminal, and install the dependencies:
 
 ```bash
 npm install
