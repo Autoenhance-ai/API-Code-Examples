@@ -43,7 +43,7 @@ This is a sample project that demonstrates how to integrate the Autoenhance Web 
 
 - `server.js` - Express.js server with routes and in-memory storage
 - `views/list.ejs` - Server-side rendered template for the property list
-- `public/create.html` - Client-side page with Web SDK integration
+- `views/create.ejs` - Server-side rendered template for the create view
 - `package.json` - Project dependencies and scripts
 
 ## How It Works
@@ -53,7 +53,7 @@ This is a sample project that demonstrates how to integrate the Autoenhance Web 
 3. The form is submitted to the server, which stores the property data in memory
 4. The list page is server-side rendered, displaying all properties from memory
 5. The server uses the JavaScript SDK to fetch order details and enhanced images from the Autoenhance API
-6. The API key is passed from the server to the client-side HTML to avoid hardcoding it
+6. The API key is passed from the server to the client-side template using EJS
 
 ## License
 
