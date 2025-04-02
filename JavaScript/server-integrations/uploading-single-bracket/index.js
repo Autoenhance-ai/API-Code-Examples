@@ -1,11 +1,11 @@
 const { getApiKey, getImages } = require("./utils/getters");
 const { generateOrderId } = require("./utils/generateOrderId");
 const { createImage } = require("./utils/createImage");
+const { Autoenhance } = require("@autoenhance.ai/javascript");
 
 const uploadImages = async () => {
     const apiKey = getApiKey();
-    // Retrieving images with node.js as a server-side API
-    // If you want to retrieve images on a browser, you can use the FileReader API, which is a client-side API
+    const client = new Autoenhance(apiKey);
     const images = await getImages();
     const orderId = generateOrderId();
 
@@ -18,9 +18,9 @@ const uploadImages = async () => {
         const name = image.name;
         const type = image.type;
 
-        const { s3PutObjectUrl } = await createImage(apiKey, orderId, image);
-
         try {
+            const { s3PutObjectUrl } = await createImage(apiKey, orderId, image);
+            
             const uploadResponse = await fetch(s3PutObjectUrl, {
                 method: "PUT",
                 headers: {
