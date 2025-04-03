@@ -1,11 +1,11 @@
-require('dotenv').config();
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const path = require('path');
-const axios = require('axios');
-const Autoenhance = require('@autoenhance.ai/javascript');
-const fs = require('fs');
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import Autoenhance from '@autoenhance.ai/javascript';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -21,7 +21,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Initialize Autoenhance client
-const autoenhance = new Autoenhance(process.env.API_KEY);
+const autoenhance = new Autoenhance.default(process.env.API_KEY);
 
 // In-memory storage for properties
 const properties = [];
