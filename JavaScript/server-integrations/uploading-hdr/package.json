@@ -1,5 +1,5 @@
 {
-    "name": "uploading-single-bracket",
+    "name": "uploading-hdr",
     "version": "1.0.0",
     "description": "",
     "keywords": [],
@@ -7,6 +7,7 @@
     "license": "ISC",
     "dependencies": {
         "dotenv": "^16.4.5",
-        "uuid": "^9.0.1"
+        "uuid": "^9.0.1",
+        "@autoenhance.ai/javascript": "^1.0.0"
     }
 }

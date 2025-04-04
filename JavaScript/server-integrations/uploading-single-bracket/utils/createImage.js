@@ -1,18 +1,14 @@
+const { Autoenhance } = require("@autoenhance.ai/javascript");
+
 const createImage = async (apiKey, orderId, image) => {
     try {
-        const data = await fetch("https://api.autoenhance.ai/v3/images/", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "x-api-key": apiKey,
-            },
-            body: JSON.stringify({
-                image_name: image.name,
-                contentType: image.type,
-                order_id: orderId,
-            }),
+        const client = new Autoenhance(apiKey);
+        const response = await client.images.create({
+            image_name: image.name,
+            contentType: image.type,
+            order_id: orderId,
         });
-        return await data.json();
+        return response;
     } catch (e) {
         console.error("Error uploading image:", e);
     }
