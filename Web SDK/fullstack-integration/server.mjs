@@ -3,12 +3,16 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import Autoenhance from '@autoenhance.ai/javascript';
+
+import  { Autoenhance } from "@autoenhance.ai/javascript";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+console.log(Autoenhance);
 
 // Middleware
 app.use(cors());
@@ -19,9 +23,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Set up view engine for server-side rendering
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-
-// Initialize Autoenhance client
-const autoenhance = new Autoenhance.default(process.env.API_KEY);
 
 // In-memory storage for properties
 const properties = [];
