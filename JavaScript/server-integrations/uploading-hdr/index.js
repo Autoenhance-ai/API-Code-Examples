@@ -20,7 +20,10 @@ const uploadImages = async () => {
         const type = image.type;
 
         const { s3PutObjectUrl } = await createImage(apiKey, orderId, image);
-
+        ////////////////////////////////////////////////////////////
+        // Important note!!!
+        // Customers with new accounts (post 2025-05-08) will see upload_url instead of s3PutObjectUrl
+        ////////////////////////////////////////////////////////////
         try {
             const uploadResponse = await fetch(s3PutObjectUrl, {
                 method: "PUT",
@@ -52,7 +55,7 @@ const uploadImages = async () => {
         console.error("Error merging images:", e);
     } finally {
         console.log(
-            `You can view the uploaded images at: https://app.autoenhance.ai/orders/${orderId}`
+            `You can view the uploaded images at: https://app.autoenhance.ai/orders/${orderId}`,
         );
     }
 };

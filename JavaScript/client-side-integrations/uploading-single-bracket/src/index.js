@@ -78,6 +78,11 @@ const uploadImage = async (apiKey, orderId, file) => {
   }
 
   const { s3PutObjectUrl } = await createImageResponse.json();
+  
+  ////////////////////////////////////////////////////////////
+  // Important note!!!
+  // Customers with new accounts (post 2025-05-08) will see upload_url instead of s3PutObjectUrl
+  ////////////////////////////////////////////////////////////
 
   if (s3PutObjectUrl) {
     const uploadImageResponse = await fetch(s3PutObjectUrl, {
