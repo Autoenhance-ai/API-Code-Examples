@@ -36,6 +36,10 @@ foreach ($image_files as $image_file) {
         $successfully_uploaded = false;
     } else {
         echo "Successfully uploaded $image_name\n";
+        ////////////////////////////////////////////////////////////
+        // Important note!!!
+        // Customers with new accounts (post 2025-05-08) will see upload_url instead of s3PutObjectUrl
+        ////////////////////////////////////////////////////////////
         $s3PutObjectUrl = $result['body']['s3PutObjectUrl'];
     }
 

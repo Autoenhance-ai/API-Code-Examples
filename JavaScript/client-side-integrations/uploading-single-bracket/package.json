@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Example of Uploading Single Bracket Images",
   "scripts": {
-    "start": "parcel ./src/index.html",
+    "start": "PARCEL_WORKERS=0 parcel ./src/index.html",
     "build": "parcel build ./src/index.html"
   },
   "devDependencies": {
