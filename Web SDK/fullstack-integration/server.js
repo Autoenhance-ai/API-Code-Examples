@@ -3,6 +3,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
+const Autoenhance = require('@autoenhance.ai/javascript').default;
+
+const autoenhance = new Autoenhance(process.env.API_KEY);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -28,7 +31,7 @@ app.get('/', async (req, res) => {
       properties.map(async (property) => {
         try {
           // Get order details using the JavaScript SDK
-          const response = await fetch(`https://api.autoenhance.ai/v3/orders/${property.order_id}/`, {
+          const response = await fetch(`https://api.autoenhance.ai/v3/orders/${property.orderId}/`, {
             method: 'GET',
             headers: {
               'x-api-key': process.env.API_KEY,
@@ -50,7 +53,7 @@ app.get('/', async (req, res) => {
             const imageId = order.images[0].id;
             const imageUrlResponse = await autoenhance.ImagesApi.downloadEnhancedImageRaw({
               id: imageId,
-              size: "large",
+              maxWidth: 1200,
             });
             imageUrl = imageUrlResponse.raw.url;
           }
